@@ -21,7 +21,9 @@ class clustersync (
     logdir_owner   => $logdir_owner,
     logdir_group   => $logdir_group,
     logdir_mode    => $logdir_mode,
-    require        => Class['csync2'],
   }
+
+  Csync2::Key <| |> -> Csync2::Cfg <| |> ~> Service['xinetd']
+  Csync2::Cfg <| |> -> Class['lsyncd']
 
 }
