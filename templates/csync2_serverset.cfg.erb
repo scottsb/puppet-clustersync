@@ -1,0 +1,13 @@
+nossl * *;
+
+group primary {
+<%- @servers.each do |server| -%>
+	host <%= server %>;
+<%- end -%>
+
+<%- @source_paths.each do |source_path| -%>
+	include <%= source_path %>;
+<%- end -%>
+
+	key /etc/csync2/csync2_<%= title %>.key;
+}
