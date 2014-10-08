@@ -1,11 +1,11 @@
 nossl * *;
 
 group primary {
-<%- @servers.each do |server| -%>
+<%- @servers.sort.each do |server| -%>
 	host <%= server %>;
 <%- end -%>
 
-<%- @source_paths.each do |source_path| -%>
+<%- @source_paths.sort.each do |source_path| -%>
 	include <%= source_path %>;
 <%- end -%>
 
