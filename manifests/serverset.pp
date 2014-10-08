@@ -5,7 +5,7 @@ define clustersync::serverset (
   $key_content  = undef
 ) {
 
-  $source_paths = values($clustersync::sources)
+  $source_paths = keys($clustersync::sources)
 
   csync2::cfg { $title :
     content => template($cfg_template),
