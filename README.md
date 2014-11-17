@@ -49,12 +49,14 @@ The `clustersync::serverset` resource matches up to one or more values from the 
 hash in the `clustersync` declaration. It specifies the servers that the indicated
 directory will be synced to. Parameters:
 
-* `servers`: array of hostnames to sync with
-* `key_source`: path to the pre-shared key (mutually exclusive with `key_content`)
+* `servers`: array of hosts to sync with*
+* `key_source`: path to the pre-shared key (mutually exclusive with `key_content`)**
 * `key_content`: content of the pre-shared key (mutually exclusive with `key_source`)
 * `csync2_template`: override of csync2 config template 
 
-A pre-shared key can be generated with the command `csync2 -k filename`.
+\* Hostnames must match the output of the `hostname` command. An IP address may
+optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
+\** A pre-shared key can be generated with the command `csync2 -k filename`.
 
 
 ## Example
