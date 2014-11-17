@@ -1,12 +1,12 @@
 {
   "name": "scottsb-clustersync",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Scott Buchanan",
-  "summary": "Combines lsyncd and csync2 to create a unified cluster synchronization solution.",
+  "summary": "Combines lsyncd and csync2 to sync files across a cluster.",
   "license": "Apache 2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/scottsb/puppet-clustersync",
+  "project_page": "https://github.com/scottsb/puppet-clustersync",
+  "issues_url": "https://github.com/scottsb/puppet-clustersync/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
     {"name":"thias-lsyncd","version_requirement":">= 0.1.1"},
