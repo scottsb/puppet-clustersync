@@ -13,3 +13,6 @@ tmtags
 ## VIM
 *.swp
 tags
+
+# Ignore package files.
+pkg/
