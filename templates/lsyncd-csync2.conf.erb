@@ -20,12 +20,14 @@ settings {
     logfile         = "/var/log/lsyncd/lsyncd.log",
     statusFile      = "/var/log/lsyncd/status.log",
     statusInterval  = 1,
-    insist          = 1
 }
 
 initSync = {
     delay = 1,
     maxProcesses = 1,
+    exitcodes = {
+        [1] = "again",
+    },
     action = function(inlet)
         local config = inlet.getConfig()
         local elist = inlet.getEvents(function(event)
