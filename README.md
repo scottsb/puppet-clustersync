@@ -101,6 +101,19 @@ distributions that include both csync2 and lsyncd in their package managers. Mos
 OS-specific support will fall to the underlying thias-lsyncd and thias-csync2 modules,
 but if you experience distro-specific issues, raise them on GitHub.
 
+## Adding Server to Existing Cluster
+
+Because csync2 is push-only, when you add a new server to the cluster, it will not
+automatically receive files from the existing servers since the original servers don't
+consider them "dirty." You can force a sync by running the following commands from
+one of the original servers (this assumes all original servers are in sync and that
+the new servers are already successfully added to the cluster):
+
+	csync2 -TUXI
+	csync2 -u
+
+See detailed discussion here:
+http://lists.linbit.com/pipermail/csync2/2012-May/000873.html
 
 ## TODO
 
