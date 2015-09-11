@@ -52,7 +52,9 @@ directory will be synced to. Parameters:
 * `servers`: array of hosts to sync with*
 * `key_source`: path to the pre-shared key (mutually exclusive with `key_content`)**
 * `key_content`: content of the pre-shared key (mutually exclusive with `key_source`)
-* `csync2_template`: override of csync2 config template 
+* `csync2_template`: override of csync2 config template
+* `exclude`: array of exclude paths/patterns (corresponds with actual `exclude` keyword for csync2)
+* `auto`: method for automated conflict resolution (e.g. `younger`)
 
 \* Hostnames must match the output of the `hostname` command. An IP address may
 optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
@@ -61,38 +63,44 @@ optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
 
 ## Example
 
-	# Set up source directories.
-	file { [
-	  '/var/uploads',
-	  '/etc/serverd',
-	]:
-	  ensure => directory,
-	}
-	
-	# Set up the automatic sync of dynamically uploaded files.
-	class { 'clustersync':
-	  sources         => {
-	    '/var/uploads' => 'uploads',
-	    '/etc/serverd' => 'serverd',
-	  },
-	  csync_only_from => '10.0.100.0/24 10.0.200.0/24'
-	}
-	clustersync::serverset { 'uploads':
-	  servers => [
-	    'foo.example.net@10.0.100.1',
-	    'bar.example.net@10.0.100.2',
-	    'baz.example.net@10.0.100.3',
-	  ],
-	  key_source => 'puppet:///mnt/csync2_uploads.key'
-	}
-	clustersync::serverset { 'serverd':
-	  servers => [
-	    'barium.example.net',
-	    'sodium.example.net',
-	  ],
-	  key_source => 'puppet:///mnt/csync2_serverd.key'
-	}
+```puppet
+# Set up source directories.
+file { [
+  '/var/uploads',
+  '/etc/serverd',
+]:
+  ensure => directory,
+}
 
+# Set up the automatic sync of dynamically uploaded files.
+class { 'clustersync':
+  sources         => {
+    '/var/uploads' => 'uploads',
+    '/etc/serverd' => 'serverd',
+  },
+  csync_only_from => '10.0.100.0/24 10.0.200.0/24'
+}
+clustersync::serverset { 'uploads':
+  servers => [
+    'foo.example.net@10.0.100.1',
+    'bar.example.net@10.0.100.2',
+    'baz.example.net@10.0.100.3',
+  ],
+  key_source => 'puppet:///mnt/csync2_uploads.key',
+  exclude => [
+    'excluded_directory1',
+    'excluded_directory2',
+  ],
+  auto => 'younger',
+}
+clustersync::serverset { 'serverd':
+  servers => [
+    'barium.example.net',
+    'sodium.example.net',
+  ],
+  key_source => 'puppet:///mnt/csync2_serverd.key'
+}
+```
 
 ## Limitations
 
