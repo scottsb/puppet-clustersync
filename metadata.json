@@ -1,6 +1,6 @@
 {
   "name": "scottsb-clustersync",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Scott Buchanan",
   "summary": "Combines lsyncd and csync2 to sync files across a cluster.",
   "license": "Apache 2.0",
