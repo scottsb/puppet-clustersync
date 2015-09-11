@@ -1,5 +1,7 @@
 define clustersync::serverset (
   $servers,
+  $exclude      = [],
+  $auto         = undef,
   $key_source   = undef,
   $key_content  = undef,
   $csync2_template = 'clustersync/csync2_serverset.cfg.erb'
