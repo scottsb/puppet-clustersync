@@ -52,7 +52,9 @@ directory will be synced to. Parameters:
 * `servers`: array of hosts to sync with*
 * `key_source`: path to the pre-shared key (mutually exclusive with `key_content`)**
 * `key_content`: content of the pre-shared key (mutually exclusive with `key_source`)
-* `csync2_template`: override of csync2 config template 
+* `csync2_template`: override of csync2 config template
+* `exclude`: array of exclude paths/patterns (corresponds with actual `exclude` keyword for csync2)
+* `auto`: method for automated conflict resolution (e.g. `younger`)
 
 \* Hostnames must match the output of the `hostname` command. An IP address may
 optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
