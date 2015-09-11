@@ -115,6 +115,11 @@ the new servers are already successfully added to the cluster):
 See detailed discussion here:
 http://lists.linbit.com/pipermail/csync2/2012-May/000873.html
 
+## Resetting a Cluster
+
+See this guide for how to manually reset a cluster that has run into issues:
+https://gist.github.com/scottsb/cc4a10b57314f63febe2
+
 ## TODO
 
 These are known areas that need to be improved:
