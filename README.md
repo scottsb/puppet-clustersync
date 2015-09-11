@@ -85,7 +85,12 @@ optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
 	    'bar.example.net@10.0.100.2',
 	    'baz.example.net@10.0.100.3',
 	  ],
-	  key_source => 'puppet:///mnt/csync2_uploads.key'
+	  key_source => 'puppet:///mnt/csync2_uploads.key',
+	  exclude => [
+	    'excluded_directory1',
+	    'excluded_directory2',
+	  ],
+	  auto => 'younger',
 	}
 	clustersync::serverset { 'serverd':
 	  servers => [
