@@ -63,43 +63,44 @@ optionally be specified in addition using the syntax `hostname@ipaddress`.<br>
 
 ## Example
 
-	# Set up source directories.
-	file { [
-	  '/var/uploads',
-	  '/etc/serverd',
-	]:
-	  ensure => directory,
-	}
-	
-	# Set up the automatic sync of dynamically uploaded files.
-	class { 'clustersync':
-	  sources         => {
-	    '/var/uploads' => 'uploads',
-	    '/etc/serverd' => 'serverd',
-	  },
-	  csync_only_from => '10.0.100.0/24 10.0.200.0/24'
-	}
-	clustersync::serverset { 'uploads':
-	  servers => [
-	    'foo.example.net@10.0.100.1',
-	    'bar.example.net@10.0.100.2',
-	    'baz.example.net@10.0.100.3',
-	  ],
-	  key_source => 'puppet:///mnt/csync2_uploads.key',
-	  exclude => [
-	    'excluded_directory1',
-	    'excluded_directory2',
-	  ],
-	  auto => 'younger',
-	}
-	clustersync::serverset { 'serverd':
-	  servers => [
-	    'barium.example.net',
-	    'sodium.example.net',
-	  ],
-	  key_source => 'puppet:///mnt/csync2_serverd.key'
-	}
+```puppet
+# Set up source directories.
+file { [
+  '/var/uploads',
+  '/etc/serverd',
+]:
+  ensure => directory,
+}
 
+# Set up the automatic sync of dynamically uploaded files.
+class { 'clustersync':
+  sources         => {
+    '/var/uploads' => 'uploads',
+    '/etc/serverd' => 'serverd',
+  },
+  csync_only_from => '10.0.100.0/24 10.0.200.0/24'
+}
+clustersync::serverset { 'uploads':
+  servers => [
+    'foo.example.net@10.0.100.1',
+    'bar.example.net@10.0.100.2',
+    'baz.example.net@10.0.100.3',
+  ],
+  key_source => 'puppet:///mnt/csync2_uploads.key',
+  exclude => [
+    'excluded_directory1',
+    'excluded_directory2',
+  ],
+  auto => 'younger',
+}
+clustersync::serverset { 'serverd':
+  servers => [
+    'barium.example.net',
+    'sodium.example.net',
+  ],
+  key_source => 'puppet:///mnt/csync2_serverd.key'
+}
+```
 
 ## Limitations
 
