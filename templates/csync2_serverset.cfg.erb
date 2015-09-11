@@ -9,5 +9,13 @@ group primary {
 	include <%= source_path %>;
 <%- end -%>
 
+<%- @exclude.sort.each do |exclude_alias| -%>
+	exclude <%= exclude_alias %>;
+<%- end -%>
+
+<%- if @auto -%>
+	auto <%= @auto %>;
+<%- end -%>
+
 	key /etc/csync2/csync2_<%= @title %>.key;
 }
