@@ -2,7 +2,7 @@ class clustersync (
   $sources,
   $logdir_owner    = 'root',
   $logdir_group    = 'root',
-  $logdir_mode     = 0644,
+  $logdir_mode     = '0644',
   $csync_port      = '30865',
   $csync_only_from = '10.0.0.0/8 172.16.0.0/12 192.168.0.0/16',
   $lsyncd_template = 'clustersync/lsyncd-csync2.conf.erb'
